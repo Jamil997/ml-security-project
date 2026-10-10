@@ -55,7 +55,7 @@ $$\widehat\Delta_j=\frac1N\sum_i\left[s_{ij}+\frac{A_i}{p_i}(d_{ij}-s_{ij})\righ
 
 For fixed scores and private independent audit coins its expectation is the true finite-pool gain, regardless of attack. Its exact design variance is
 
-$$\operatorname{Var}(\widehat\Delta_j)=\frac1{N^2}\sum_i(p_i^{-1}-1)(d_{ij}-s_{ij})^2.$$
+$$\mathrm{Var}(\widehat\Delta_j)=\frac1{N^2}\sum_i(p_i^{-1}-1)(d_{ij}-s_{ij})^2.$$
 
 The normal gate plugs an unbiased variance estimator into a Bonferroni-adjusted normal lower bound. **Unbiased variance estimation does not guarantee interval coverage**, especially when rare, enormous corrections dominate the distribution. The Bernstein reference uses bounded residuals and a simultaneous union bound. See `bounds()` in [experiment.py](experiment.py). The code records theoretical variance and Monte Carlo variance separately; short replays may miss rare tails.
 
