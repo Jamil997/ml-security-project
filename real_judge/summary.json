@@ -1,0 +1,137 @@
+{
+  "real_judge_calls": 600,
+  "semantic_pairs": 100,
+  "question_clusters": 10,
+  "inference_seconds_sum": 348.1663855074439,
+  "max_reported_memory_gb": 4.985481968,
+  "replay": [
+    {
+      "condition": "clean",
+      "generation_count": 200,
+      "pair_count": 100,
+      "free_target_selection_rate": 0.065,
+      "free_success_both_orders": 0.0,
+      "unparseable_rate": 0.0,
+      "forced_pair_target_selection_rate": 0.03,
+      "forced_clear_wrong_selection_rate": 0.0,
+      "mean_entropy": 0.1520960694093114,
+      "mean_label_mass": 0.9999998831748962,
+      "minimum_label_mass": 0.999992311000824,
+      "free_forced_agreement_parsed": 1.0
+    },
+    {
+      "condition": "published",
+      "generation_count": 200,
+      "pair_count": 100,
+      "free_target_selection_rate": 0.815,
+      "free_success_both_orders": 0.68,
+      "unparseable_rate": 0.0,
+      "forced_pair_target_selection_rate": 0.85,
+      "forced_clear_wrong_selection_rate": 0.72,
+      "mean_entropy": 0.3015925005325363,
+      "mean_label_mass": 0.9999996489286422,
+      "minimum_label_mass": 0.9999942183494568,
+      "free_forced_agreement_parsed": 1.0
+    },
+    {
+      "condition": "neutral",
+      "generation_count": 200,
+      "pair_count": 100,
+      "free_target_selection_rate": 0.055,
+      "free_success_both_orders": 0.0,
+      "unparseable_rate": 0.0,
+      "forced_pair_target_selection_rate": 0.0,
+      "forced_clear_wrong_selection_rate": 0.0,
+      "mean_entropy": 0.11962911714597374,
+      "mean_label_mass": 0.9999999704957009,
+      "minimum_label_mass": 0.9999980330467224,
+      "free_forced_agreement_parsed": 1.0
+    }
+  ],
+  "cluster_bootstrap": {
+    "entropy_fixed_residual": {
+      "estimate": 0.06020668732521919,
+      "lower": 0.03791192988806836,
+      "upper": 0.08006972561540249
+    },
+    "entropy_priority_increment": {
+      "estimate": -0.00593333912204826,
+      "lower": -0.02665307684275158,
+      "upper": 0.014790455695034184
+    },
+    "uniform_fixed_residual": {
+      "estimate": 0.08959999999999999,
+      "lower": 0.05839999999999999,
+      "upper": 0.128
+    },
+    "uniform_priority_increment": {
+      "estimate": 0.0,
+      "lower": 0.0,
+      "upper": 0.0
+    },
+    "mixture_50_fixed_residual": {
+      "estimate": 0.07490334366260959,
+      "lower": 0.051462936447056,
+      "upper": 0.09757822955706176
+    },
+    "mixture_50_priority_increment": {
+      "estimate": -0.00296666956102413,
+      "lower": -0.013214278177521644,
+      "upper": 0.00727135147555068
+    },
+    "entropy_minus_uniform_fixed": {
+      "estimate": -0.029393312674780812,
+      "lower": -0.0666971185177933,
+      "upper": 0.0017928564522662238
+    },
+    "published_minus_clean_pair_choice": {
+      "estimate": 0.82,
+      "lower": 0.62,
+      "upper": 0.95
+    },
+    "neutral_minus_clean_pair_choice": {
+      "estimate": -0.030000000000000006,
+      "lower": -0.08,
+      "upper": 0.0
+    }
+  },
+  "confidence_inversion_witness_count": 17,
+  "primary_adaptive": [
+    {
+      "allocator": "entropy",
+      "audit_fraction": 0.2,
+      "corruption_fraction": 0.1,
+      "actually_attacked_pairs": 10,
+      "residual_target_selection": 0.09899973366581802,
+      "before_auditing": 0.13,
+      "expected_audits": 19.999999999999996,
+      "search_evaluations": 1855,
+      "improving_swaps": 0
+    },
+    {
+      "allocator": "uniform",
+      "audit_fraction": 0.2,
+      "corruption_fraction": 0.1,
+      "actually_attacked_pairs": 10,
+      "residual_target_selection": 0.10400000000000002,
+      "before_auditing": 0.13,
+      "expected_audits": 19.999999999999996,
+      "search_evaluations": 1855,
+      "improving_swaps": 0
+    },
+    {
+      "allocator": "mixture_50",
+      "audit_fraction": 0.2,
+      "corruption_fraction": 0.1,
+      "actually_attacked_pairs": 10,
+      "residual_target_selection": 0.10149986683290901,
+      "before_auditing": 0.13,
+      "expected_audits": 20.000000000000004,
+      "search_evaluations": 1855,
+      "improving_swaps": 0
+    }
+  ],
+  "assumption": "An ideal auditor corrects the source-defined undesired choice. No human study was run.",
+  "numerical_correction": "Pair choices are resolved by the sum of unrounded logit differences. All original free generations are unchanged. Initial float32 probability averaging is archived, not used for final audit results.",
+  "analysis_sha256": "5be1709c6e436c45b6cc26bde070b6fe66fc013652ca779fb548bd27b37e4beb"
+}

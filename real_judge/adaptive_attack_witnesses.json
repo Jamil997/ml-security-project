@@ -1,0 +1,1262 @@
+{
+  "entropy-audit0.1-corruption0.0": {
+    "attacked_pairs": [],
+    "search_evaluations": 0,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.011948061961851705
+  },
+  "uniform-audit0.1-corruption0.0": {
+    "attacked_pairs": [],
+    "search_evaluations": 0,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.027000000000000003
+  },
+  "mixture_50-audit0.1-corruption0.0": {
+    "attacked_pairs": [],
+    "search_evaluations": 0,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.01947403098092585
+  },
+  "entropy-audit0.1-corruption0.1": {
+    "attacked_pairs": [
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        25
+      ],
+      [
+        7,
+        30
+      ],
+      [
+        7,
+        35
+      ],
+      [
+        7,
+        40
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        35
+      ],
+      [
+        10,
+        40
+      ]
+    ],
+    "search_evaluations": 1855,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.11094806184924103
+  },
+  "uniform-audit0.1-corruption0.1": {
+    "attacked_pairs": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        15
+      ],
+      [
+        1,
+        20
+      ],
+      [
+        1,
+        25
+      ],
+      [
+        1,
+        30
+      ],
+      [
+        1,
+        35
+      ],
+      [
+        1,
+        40
+      ],
+      [
+        1,
+        45
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "search_evaluations": 1855,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.117
+  },
+  "mixture_50-audit0.1-corruption0.1": {
+    "attacked_pairs": [
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        25
+      ],
+      [
+        7,
+        30
+      ],
+      [
+        7,
+        35
+      ],
+      [
+        7,
+        40
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        35
+      ],
+      [
+        10,
+        40
+      ]
+    ],
+    "search_evaluations": 1855,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.11397403092462051
+  },
+  "entropy-audit0.1-corruption0.2": {
+    "attacked_pairs": [
+      [
+        4,
+        10
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        7,
+        25
+      ],
+      [
+        7,
+        30
+      ],
+      [
+        7,
+        35
+      ],
+      [
+        7,
+        40
+      ],
+      [
+        7,
+        45
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        10,
+        25
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        35
+      ],
+      [
+        10,
+        40
+      ],
+      [
+        10,
+        45
+      ]
+    ],
+    "search_evaluations": 3410,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.20994806142771705
+  },
+  "uniform-audit0.1-corruption0.2": {
+    "attacked_pairs": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        15
+      ],
+      [
+        1,
+        20
+      ],
+      [
+        1,
+        25
+      ],
+      [
+        1,
+        30
+      ],
+      [
+        1,
+        35
+      ],
+      [
+        1,
+        40
+      ],
+      [
+        1,
+        45
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        3,
+        15
+      ],
+      [
+        3,
+        20
+      ],
+      [
+        3,
+        25
+      ],
+      [
+        3,
+        30
+      ],
+      [
+        3,
+        35
+      ],
+      [
+        3,
+        40
+      ],
+      [
+        3,
+        45
+      ],
+      [
+        4,
+        0
+      ]
+    ],
+    "search_evaluations": 3410,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.20700000000000002
+  },
+  "mixture_50-audit0.1-corruption0.2": {
+    "attacked_pairs": [
+      [
+        4,
+        10
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        7,
+        25
+      ],
+      [
+        7,
+        30
+      ],
+      [
+        7,
+        35
+      ],
+      [
+        7,
+        40
+      ],
+      [
+        7,
+        45
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        10,
+        25
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        35
+      ],
+      [
+        10,
+        40
+      ],
+      [
+        10,
+        45
+      ]
+    ],
+    "search_evaluations": 3410,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.2084740307138585
+  },
+  "entropy-audit0.2-corruption0.0": {
+    "attacked_pairs": [],
+    "search_evaluations": 0,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.0
+  },
+  "uniform-audit0.2-corruption0.0": {
+    "attacked_pairs": [],
+    "search_evaluations": 0,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.024000000000000004
+  },
+  "mixture_50-audit0.2-corruption0.0": {
+    "attacked_pairs": [],
+    "search_evaluations": 0,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.012000000000000002
+  },
+  "entropy-audit0.2-corruption0.1": {
+    "attacked_pairs": [
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        25
+      ],
+      [
+        7,
+        30
+      ],
+      [
+        7,
+        35
+      ],
+      [
+        7,
+        40
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        25
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        40
+      ],
+      [
+        10,
+        45
+      ]
+    ],
+    "search_evaluations": 1855,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.09899973366581802
+  },
+  "uniform-audit0.2-corruption0.1": {
+    "attacked_pairs": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        15
+      ],
+      [
+        1,
+        20
+      ],
+      [
+        1,
+        25
+      ],
+      [
+        1,
+        30
+      ],
+      [
+        1,
+        35
+      ],
+      [
+        1,
+        40
+      ],
+      [
+        1,
+        45
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "search_evaluations": 1855,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.10400000000000002
+  },
+  "mixture_50-audit0.2-corruption0.1": {
+    "attacked_pairs": [
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        25
+      ],
+      [
+        7,
+        30
+      ],
+      [
+        7,
+        35
+      ],
+      [
+        7,
+        40
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        25
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        40
+      ],
+      [
+        10,
+        45
+      ]
+    ],
+    "search_evaluations": 1855,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.10149986683290901
+  },
+  "entropy-audit0.2-corruption0.2": {
+    "attacked_pairs": [
+      [
+        4,
+        10
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        7,
+        25
+      ],
+      [
+        7,
+        30
+      ],
+      [
+        7,
+        35
+      ],
+      [
+        7,
+        40
+      ],
+      [
+        7,
+        45
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        10,
+        25
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        35
+      ],
+      [
+        10,
+        40
+      ],
+      [
+        10,
+        45
+      ]
+    ],
+    "search_evaluations": 3410,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.19799811075136717
+  },
+  "uniform-audit0.2-corruption0.2": {
+    "attacked_pairs": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        15
+      ],
+      [
+        1,
+        20
+      ],
+      [
+        1,
+        25
+      ],
+      [
+        1,
+        30
+      ],
+      [
+        1,
+        35
+      ],
+      [
+        1,
+        40
+      ],
+      [
+        1,
+        45
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        3,
+        15
+      ],
+      [
+        3,
+        30
+      ],
+      [
+        3,
+        40
+      ],
+      [
+        3,
+        45
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        35
+      ],
+      [
+        10,
+        40
+      ],
+      [
+        10,
+        45
+      ]
+    ],
+    "search_evaluations": 3410,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.18400000000000005
+  },
+  "mixture_50-audit0.2-corruption0.2": {
+    "attacked_pairs": [
+      [
+        4,
+        10
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        7,
+        25
+      ],
+      [
+        7,
+        30
+      ],
+      [
+        7,
+        35
+      ],
+      [
+        7,
+        40
+      ],
+      [
+        7,
+        45
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        10,
+        25
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        35
+      ],
+      [
+        10,
+        40
+      ],
+      [
+        10,
+        45
+      ]
+    ],
+    "search_evaluations": 3410,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.19099905537568362
+  },
+  "entropy-audit0.4-corruption0.0": {
+    "attacked_pairs": [],
+    "search_evaluations": 0,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.0
+  },
+  "uniform-audit0.4-corruption0.0": {
+    "attacked_pairs": [],
+    "search_evaluations": 0,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.018
+  },
+  "mixture_50-audit0.4-corruption0.0": {
+    "attacked_pairs": [],
+    "search_evaluations": 0,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.009000000000000001
+  },
+  "entropy-audit0.4-corruption0.1": {
+    "attacked_pairs": [
+      [
+        5,
+        0
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        25
+      ],
+      [
+        7,
+        30
+      ],
+      [
+        7,
+        35
+      ],
+      [
+        7,
+        40
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        40
+      ],
+      [
+        10,
+        45
+      ]
+    ],
+    "search_evaluations": 1855,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.08690274554032593
+  },
+  "uniform-audit0.4-corruption0.1": {
+    "attacked_pairs": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        15
+      ],
+      [
+        1,
+        20
+      ],
+      [
+        1,
+        25
+      ],
+      [
+        1,
+        40
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        35
+      ],
+      [
+        10,
+        40
+      ],
+      [
+        10,
+        45
+      ]
+    ],
+    "search_evaluations": 1855,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.07799999999999999
+  },
+  "mixture_50-audit0.4-corruption0.1": {
+    "attacked_pairs": [
+      [
+        5,
+        0
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        25
+      ],
+      [
+        7,
+        30
+      ],
+      [
+        7,
+        35
+      ],
+      [
+        7,
+        40
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        40
+      ],
+      [
+        10,
+        45
+      ]
+    ],
+    "search_evaluations": 1855,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.08245137277016297
+  },
+  "entropy-audit0.4-corruption0.2": {
+    "attacked_pairs": [
+      [
+        4,
+        10
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        7,
+        25
+      ],
+      [
+        7,
+        30
+      ],
+      [
+        7,
+        35
+      ],
+      [
+        7,
+        40
+      ],
+      [
+        7,
+        45
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        10,
+        25
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        35
+      ],
+      [
+        10,
+        40
+      ],
+      [
+        10,
+        45
+      ]
+    ],
+    "search_evaluations": 6610,
+    "improving_swaps": 2,
+    "expected_residual_target_selection": 0.14779735683364323
+  },
+  "uniform-audit0.4-corruption0.2": {
+    "attacked_pairs": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        15
+      ],
+      [
+        1,
+        20
+      ],
+      [
+        1,
+        25
+      ],
+      [
+        1,
+        30
+      ],
+      [
+        1,
+        35
+      ],
+      [
+        1,
+        40
+      ],
+      [
+        1,
+        45
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        10
+      ],
+      [
+        3,
+        15
+      ],
+      [
+        3,
+        20
+      ],
+      [
+        3,
+        25
+      ],
+      [
+        3,
+        30
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        35
+      ],
+      [
+        10,
+        40
+      ],
+      [
+        10,
+        45
+      ]
+    ],
+    "search_evaluations": 3410,
+    "improving_swaps": 0,
+    "expected_residual_target_selection": 0.13799999999999998
+  },
+  "mixture_50-audit0.4-corruption0.2": {
+    "attacked_pairs": [
+      [
+        4,
+        10
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        7,
+        25
+      ],
+      [
+        7,
+        30
+      ],
+      [
+        7,
+        35
+      ],
+      [
+        7,
+        40
+      ],
+      [
+        7,
+        45
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        10,
+        25
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        10,
+        35
+      ],
+      [
+        10,
+        40
+      ],
+      [
+        10,
+        45
+      ]
+    ],
+    "search_evaluations": 6610,
+    "improving_swaps": 2,
+    "expected_residual_target_selection": 0.1428986784168216
+  }
+}

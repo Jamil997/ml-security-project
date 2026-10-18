@@ -1,0 +1,172 @@
+[
+  {
+    "question_id": 1,
+    "competitor_index": 0,
+    "clean_target_score": 0.4999779994429748,
+    "attacked_target_score": 0.9998673429729357,
+    "clean_entropy": 0.9999999986034005,
+    "attacked_entropy": 0.0018999949452902208,
+    "clean_audit_probability": 1.0,
+    "attacked_audit_probability": 1.0
+  },
+  {
+    "question_id": 1,
+    "competitor_index": 5,
+    "clean_target_score": 0.499999998911342,
+    "attacked_target_score": 0.590044716256856,
+    "clean_entropy": 1.0,
+    "attacked_entropy": 0.9764769826890751,
+    "clean_audit_probability": 1.0,
+    "attacked_audit_probability": 1.0
+  },
+  {
+    "question_id": 5,
+    "competitor_index": 0,
+    "clean_target_score": 0.49978472147510894,
+    "attacked_target_score": 0.9999999999520369,
+    "clean_entropy": 0.9999998662770446,
+    "attacked_entropy": 1.7133361037396962e-09,
+    "clean_audit_probability": 1.0,
+    "attacked_audit_probability": 0.010020418769244279
+  },
+  {
+    "question_id": 5,
+    "competitor_index": 5,
+    "clean_target_score": 0.17610089102948104,
+    "attacked_target_score": 0.9999999372218695,
+    "clean_entropy": 0.67147252603525,
+    "attacked_entropy": 1.5925466797595402e-06,
+    "clean_audit_probability": 1.0,
+    "attacked_audit_probability": 0.028679140985718873
+  },
+  {
+    "question_id": 5,
+    "competitor_index": 10,
+    "clean_target_score": 0.49769521391747734,
+    "attacked_target_score": 0.966715405507415,
+    "clean_entropy": 0.9999846726414038,
+    "attacked_entropy": 0.21060547475249727,
+    "clean_audit_probability": 1.0,
+    "attacked_audit_probability": 1.0
+  },
+  {
+    "question_id": 5,
+    "competitor_index": 25,
+    "clean_target_score": 0.49997218900797197,
+    "attacked_target_score": 0.9999534270223112,
+    "clean_entropy": 0.9999999977682913,
+    "attacked_entropy": 0.0007373810507275924,
+    "clean_audit_probability": 1.0,
+    "attacked_audit_probability": 1.0
+  },
+  {
+    "question_id": 5,
+    "competitor_index": 35,
+    "clean_target_score": 0.4999999891857642,
+    "attacked_target_score": 0.9999994136736806,
+    "clean_entropy": 0.9999999999999997,
+    "attacked_entropy": 1.2983895829062448e-05,
+    "clean_audit_probability": 1.0,
+    "attacked_audit_probability": 0.14679972316186704
+  },
+  {
+    "question_id": 5,
+    "competitor_index": 40,
+    "clean_target_score": 0.4998008934661405,
+    "attacked_target_score": 0.9998734218078914,
+    "clean_entropy": 0.9999998856132897,
+    "attacked_entropy": 0.001821496543072659,
+    "clean_audit_probability": 1.0,
+    "attacked_audit_probability": 1.0
+  },
+  {
+    "question_id": 5,
+    "competitor_index": 45,
+    "clean_target_score": 0.004634006700560583,
+    "attacked_target_score": 0.9999938899478159,
+    "clean_entropy": 0.04259982715815209,
+    "attacked_entropy": 0.00011464336433526205,
+    "clean_audit_probability": 1.0,
+    "attacked_audit_probability": 0.6431655597754694
+  },
+  {
+    "question_id": 7,
+    "competitor_index": 35,
+    "clean_target_score": 2.501018871166906e-11,
+    "attacked_target_score": 0.9999999999780944,
+    "clean_entropy": 9.169082753898288e-10,
+    "attacked_entropy": 8.072780010960936e-10,
+    "clean_audit_probability": 0.010001759511038483,
+    "attacked_audit_probability": 0.010001549136554794
+  },
+  {
+    "question_id": 8,
+    "competitor_index": 5,
+    "clean_target_score": 0.4999999996679874,
+    "attacked_target_score": 0.9999669739149988,
+    "clean_entropy": 1.0,
+    "attacked_entropy": 0.0005392732234938569,
+    "clean_audit_probability": 1.0,
+    "attacked_audit_probability": 1.0
+  },
+  {
+    "question_id": 8,
+    "competitor_index": 10,
+    "clean_target_score": 0.4999999922428549,
+    "attacked_target_score": 0.999809955703618,
+    "clean_entropy": 0.9999999999999998,
+    "attacked_entropy": 0.0026233590376289317,
+    "clean_audit_probability": 1.0,
+    "attacked_audit_probability": 1.0
+  },
+  {
+    "question_id": 8,
+    "competitor_index": 30,
+    "clean_target_score": 0.06648212013529844,
+    "attacked_target_score": 0.9999880373142299,
+    "clean_entropy": 0.35265630570750023,
+    "attacked_entropy": 0.00021286146528290382,
+    "clean_audit_probability": 1.0,
+    "attacked_audit_probability": 0.8153798049944717
+  },
+  {
+    "question_id": 10,
+    "competitor_index": 5,
+    "clean_target_score": 2.3715451840052415e-10,
+    "attacked_target_score": 0.9999999999818145,
+    "clean_entropy": 7.92479063584446e-09,
+    "attacked_entropy": 6.7506437401272e-10,
+    "clean_audit_probability": 0.010015207362585425,
+    "attacked_audit_probability": 0.010001295516930514
+  },
+  {
+    "question_id": 10,
+    "competitor_index": 25,
+    "clean_target_score": 4.717823597050407e-10,
+    "attacked_target_score": 0.9999999999492666,
+    "clean_entropy": 1.5297002638059687e-08,
+    "attacked_entropy": 1.8081880952392436e-09,
+    "clean_audit_probability": 0.010029354348433507,
+    "attacked_audit_probability": 0.010003470314851116
+  },
+  {
+    "question_id": 10,
+    "competitor_index": 30,
+    "clean_target_score": 1.6440379151386654e-10,
+    "attacked_target_score": 0.9999999999671837,
+    "clean_entropy": 5.580642758233047e-09,
+    "attacked_entropy": 1.1902306959739219e-09,
+    "clean_audit_probability": 0.010010709034696806,
+    "attacked_audit_probability": 0.010002284107332058
+  },
+  {
+    "question_id": 10,
+    "competitor_index": 45,
+    "clean_target_score": 4.646812297464468e-10,
+    "attacked_target_score": 0.9999999999587927,
+    "clean_entropy": 1.5076923794683537e-08,
+    "attacked_entropy": 1.4810303542598428e-09,
+    "clean_audit_probability": 0.010028932025759963,
+    "attacked_audit_probability": 0.010002842429504999
+  }
+]

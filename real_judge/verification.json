@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "records_verified": 600,
+  "question_clusters": 10,
+  "pair_decisions_checked_with_100_digit_arithmetic": 300,
+  "monte_carlo_cross_checks": [
+    {
+      "allocator": "entropy",
+      "analytic": 0.337455653098079,
+      "simulation": 0.337516
+    },
+    {
+      "allocator": "uniform",
+      "analytic": 0.32,
+      "simulation": 0.320058
+    },
+    {
+      "allocator": "mixture_50",
+      "analytic": 0.32872782654903954,
+      "simulation": 0.328425
+    }
+  ],
+  "meaning": "Integrity and numerical checks; not independent reproduction of model outputs or a statistical guarantee."
+}

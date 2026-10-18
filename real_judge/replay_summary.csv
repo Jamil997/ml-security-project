@@ -1,0 +1,4 @@
+condition,generation_count,pair_count,free_target_selection_rate,free_success_both_orders,unparseable_rate,forced_pair_target_selection_rate,forced_clear_wrong_selection_rate,mean_entropy,mean_label_mass,minimum_label_mass,free_forced_agreement_parsed
+clean,200,100,0.065,0.0,0.0,0.03,0.0,0.1520960694093114,0.9999998831748962,0.999992311000824,1.0
+published,200,100,0.815,0.68,0.0,0.85,0.72,0.3015925005325363,0.9999996489286422,0.9999942183494568,1.0
+neutral,200,100,0.055,0.0,0.0,0.0,0.0,0.11962911714597374,0.9999999704957009,0.9999980330467224,1.0

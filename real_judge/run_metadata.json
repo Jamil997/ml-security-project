@@ -1,0 +1,26 @@
+{
+  "started_utc": "2026-10-18T17:09:59Z",
+  "protocol_sha256": "a28f424c57f48e5450a519ac3414c46c6b83d76748345c70714a0aad6fc8f286",
+  "input_sha256": {
+    "upstream/dataset/results_suffix/basic/llmbar.json": "47f6a496b007ead08c807af732d8010654f2f6e33d38c92821cbaaa067921a62",
+    "upstream/dataset/data_for_eval/basic/llmbar/llmbar_test_1.csv": "28f7ab625215ec46dabc9054abbb3031d6ee11c162b4b8f9c9af6a823d2ea6cc",
+    "upstream/dataset/data_for_eval/basic/llmbar/llmbar_test_2.csv": "f35c4143b5af0210424dcca8d9bef5e57ffe3113862d30d7b89c40dd3e0682a6",
+    "upstream/dataset/data_for_eval/basic/llmbar/llmbar_test_3.csv": "0845634a9925b62ff23ee10b06a090a5b1c1b45773e4b402af7d29baddcc4202",
+    "upstream/dataset/data_for_eval/basic/llmbar/llmbar_test_4.csv": "05bb7923b6b8e5a054bc1eef7d662c312dfcb16e57ecc9677fd0e6e28aea262e",
+    "upstream/dataset/data_for_eval/basic/llmbar/llmbar_test_5.csv": "3e02f6a90dca4016fda5b7f6152a74a1de2790f1a6860714622765e12e5fff5b",
+    "upstream/dataset/data_for_eval/basic/llmbar/llmbar_test_6.csv": "2f950b34ca611c03c815812f200443f74d3d312b5c813a624c90f8bc494767f3",
+    "upstream/dataset/data_for_eval/basic/llmbar/llmbar_test_7.csv": "aebf6c7018438d35f7bfad96770c9869701c90e2f53c45bedd06a51ced7abe61",
+    "upstream/dataset/data_for_eval/basic/llmbar/llmbar_test_8.csv": "89df054d32d81b5d52e48023d4d361dd15e6cdd1998e8f4250a0153947097e77",
+    "upstream/dataset/data_for_eval/basic/llmbar/llmbar_test_9.csv": "5752c7c93a0c3d298bf2e55e80c29c702ee5e935a43fc36e094040053f822643",
+    "upstream/dataset/data_for_eval/basic/llmbar/llmbar_test_10.csv": "c88bfadcef021712875c3d13cd8e61ba242abf02487238c07f2916b259a6e5fe"
+  },
+  "runner_sha256": "e0478b4222ffb1fc9d7ac2977d4f1bb543b93ceba8308dc173e350743497b293",
+  "platform": "macOS-26.7.1-arm64-arm-64bit",
+  "python": "3.12.14",
+  "hardware": "Apple M5 Pro",
+  "expected_records": 600,
+  "model_revision": "64481e3a4a7bb0990c45c991958f8d6c00c1e785",
+  "completed_records": 600,
+  "last_session_seconds": 349.1360441669822,
+  "completed_utc": "2026-10-18T17:15:47Z"
+}

@@ -1,0 +1,10 @@
+attack_optimized_for,evaluated_allocator,residual_target_selection
+entropy,entropy,0.09899973366581802
+entropy,uniform,0.10400000000000002
+entropy,mixture_50,0.10149986683290901
+uniform,entropy,0.03641055957220863
+uniform,uniform,0.10400000000000002
+uniform,mixture_50,0.07020527978610432
+mixture_50,entropy,0.09899973366581802
+mixture_50,uniform,0.10400000000000002
+mixture_50,mixture_50,0.10149986683290901

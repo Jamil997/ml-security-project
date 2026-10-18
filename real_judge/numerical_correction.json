@@ -1,0 +1,61 @@
+{
+  "method": "Stable log-odds aggregation; checked with 100-digit arithmetic. Raw generations unchanged.",
+  "corrected_decisions": [
+    {
+      "question_id": "1",
+      "competitor_index": "5",
+      "condition": "clean",
+      "initial_choice": 1,
+      "corrected_choice": 0,
+      "corrected_sum_log_odds": "-2.203125"
+    },
+    {
+      "question_id": "5",
+      "competitor_index": "35",
+      "condition": "clean",
+      "initial_choice": 1,
+      "corrected_choice": 0,
+      "corrected_sum_log_odds": "-7.109375"
+    },
+    {
+      "question_id": "8",
+      "competitor_index": "5",
+      "condition": "clean",
+      "initial_choice": 1,
+      "corrected_choice": 0,
+      "corrected_sum_log_odds": "-3.0859375"
+    },
+    {
+      "question_id": "8",
+      "competitor_index": "10",
+      "condition": "clean",
+      "initial_choice": 1,
+      "corrected_choice": 0,
+      "corrected_sum_log_odds": "-5.3125"
+    },
+    {
+      "question_id": "6",
+      "competitor_index": "10",
+      "condition": "published",
+      "initial_choice": 1,
+      "corrected_choice": 0,
+      "corrected_sum_log_odds": "-6.1171875"
+    },
+    {
+      "question_id": "8",
+      "competitor_index": "0",
+      "condition": "neutral",
+      "initial_choice": 1,
+      "corrected_choice": 0,
+      "corrected_sum_log_odds": "-3.5234375"
+    },
+    {
+      "question_id": "8",
+      "competitor_index": "35",
+      "condition": "neutral",
+      "initial_choice": 1,
+      "corrected_choice": 0,
+      "corrected_sum_log_odds": "-1.8828125"
+    }
+  ]
+}

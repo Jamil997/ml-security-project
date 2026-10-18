@@ -1,0 +1,5 @@
+# Optional: Apple Silicon / MLX inference. Analysis needs only ../requirements.txt.
+mlx==0.32.4
+mlx-lm==0.32.2
+transformers==5.20.1
+huggingface-hub==2.2.0
