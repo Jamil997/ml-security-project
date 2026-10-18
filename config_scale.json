@@ -1,1 +1,0 @@
-{"n": 8192, "seeds": 200, "seed_start": 21000, "replays": 2048, "calibration_n": 8192, "attack_fraction": 0.10, "audit_fraction": 0.20, "search_candidates": 120, "search_replays": 128}
