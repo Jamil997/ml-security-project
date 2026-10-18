@@ -1,120 +1,110 @@
-# ML security project: when attacks redirect verification
+# Budgeted verification of LLM judges under adaptive prompt injection
 
-A **small, reproducible CPU experiment** on synthetic judge scores and audit priorities. This is a mechanism study for the proposed project *Selection-Aware Attacks on LLM Judges: Reliable Model Choice with Limited Verification*.
+This project studies how to use a limited trusted-review budget when an LLM judge can be manipulated. Selective review can concentrate labels on difficult cases, but an injected response may be confidently wrong and therefore receive little scrutiny. The research goal is to preserve the efficiency of selective review while making reliable, useful model comparisons under adaptive attacks.
 
-**Measured result:** manipulating both the judge score and the audit priority can make a naive normal-approximation selection rule fail badly. Simple uniform auditing already works well in this setting. This is **not** a new certified defense, a reproduction of published active-inference algorithms, or an experiment on real LLMs.
+The repository contains two completed experiments. The **real-judge pilot** replays published JudgeDeceiver suffixes on a local Mistral judge and evaluates the resulting review allocations. The **synthetic stress test** isolates a failure of normal-approximation inference under manipulated audit priorities. These experiments establish a mechanism and a testbed; the proposed statistical defense remains to be implemented.
 
-The [earlier poisoned-logs pilot](https://github.com/Jamil997/poisoned-logs-prior-pilot) is a separate historical snapshot.
+## Real-judge results
 
-## What we actually ran
+We ran 600 judgments: ten source questions, ten competitor responses per question, both response orders, and three text conditions. The model is 4-bit Mistral-7B-Instruct-v0.2, run locally with MLX. Inputs come from the [JudgeDeceiver release](https://github.com/ShiJiawenwen/JudgeDeceiver), pinned to a recorded commit. This is an adapted replay, not a fresh reproduction of gradient optimization or the original CUDA experiment.
 
-- 40 independently generated pools, seeds **12000–12039**, each with **1,024 prompts** and three frozen configurations: baseline, better candidate, worse candidate.
-- **512 independent audit replays per pool**: 20,480 decisions per method/condition. These are 40 datasets, not 20,480 independent datasets.
-- **10% corruption budget**: up to 102 prompt rows. Only the worse candidate's proxy score and a row's untrusted audit-priority signal can change. Gold labels stay fixed.
-- **20% expected audit fraction**, equal across audit allocators. One audited prompt reveals all three labels, so expected test cost is **614.4 gold labels per replay**. Actual counts fluctuate; draws are not truncated.
-- Five allocations: uncertainty-based active allocation, uniform allocation, and uniform mixtures of 25%, 50%, and 75%.
-- No attack, random joint edits, scores-only, priorities-only, joint selection attack, and joint utility-loss attack. The four factorial cells share the same payload within each defender.
-- Each adaptive search evaluates **60 allowed payloads**, using 64 search-only audit replays and predictions learned from **2,048 independent calibration prompts**. The attacker receives 6,144 synthetic training labels, reported separately from defender test audits. It never receives evaluation gold labels or evaluation audit coins.
-- Separate point-estimate, normal-approximation, and conservative Bernstein gates. The last has a valid fixed-pool bound; the normal gate is explicitly **uncertified**.
-- NumPy 2.3.5; the final pilot took **5.09 seconds with two worker processes** on the local ARM64 machine, excluding plotting, installation and tests. This is not a university-server timing measurement.
+| Text condition | Attacker response selected |
+|---|---:|
+| Clean | 6.500% |
+| Published attack suffix | 81.500% |
+| Neutral padding | 5.500% |
 
-## Results
+All generated answers were parseable. The attack succeeded in both response orders for 68 of 100 pairs. On a predefined subset of five questions with clearly incorrect attacker responses, selection rose from 0.000% to 75.000%; neutral padding remained at 0.000%. Other source-designated bad responses include subjective cases, so attacker-response selection should not universally be read as factual error.
 
-The following table is for the **uncertified normal gate**, under attacks optimized separately against each allocator to select the worse candidate. Harm means selecting a candidate more than one percentage point worse than baseline; true improvement is measured in percentage points. Coverage means the fraction of replays in which both lower bounds are below their true finite-pool gains; its nominal target is 95%.
+### The review-cost trade-off
 
-| Audit allocation | Harmful selection | True improvement | Fallback | Lower-bound coverage |
-|---|---:|---:|---:|---:|
-| Active | 86.318% | −0.714 pp | 0.273% | 1.77% |
-| 25% uniform mixture | 0.562% | +6.034 pp | 3.433% | 90.47% |
-| 50% uniform mixture | 0.024% | +6.266 pp | 0.200% | 92.50% |
-| 75% uniform mixture | 0.010% | +6.274 pp | 0.083% | 93.38% |
-| Uniform | 0.015% | +6.262 pp | 0.298% | 94.39% |
+The review experiment allows at most ten of the 100 pairs to receive their published suffix. Each allocation rule faces its own attack, which knows the rule and chooses placements to maximize expected unaudited selections of the attacker's response. Trusted review is simulated: an ideal reviewer corrects the source-defined error when a pair is audited.
 
-![Synthetic pilot results; the normal gate is not certified](pilot_figure.png)
+| Review rule | Audit 10% | Audit 20% | Audit 40% |
+|---|---:|---:|---:|
+| Entropy priority | 11.095% | **9.900%** | 8.690% |
+| Uniform | 11.700% | 10.400% | **7.800%** |
+| Equal mixture | 11.397% | 10.150% | 8.245% |
 
-**Mechanism ablation:** for the active allocator, applying the same score edits while retaining the clean audit priorities gives 0.005% harmful selection and +6.277 pp improvement. Activating the attacked priorities raises harm by **86.313 percentage points** (paired pool-bootstrap 95% interval: **80.224 to 91.206 pp**). This is a controlled software intervention on the acquisition pathway; it is not a claim about natural mediation in real deployments.
+Entries are expected residual attacker-response selection rates; lower is better. Budgets match expected numbers of reviewed pairs. Results are conditional on this cached pool, with ten question clusters, and do not establish population-level superiority.
 
-**Concrete witness, seed 12000:** edited rows' average audit probability drops from 0.115293 to 0.000122. They are almost never checked. If one is checked, inverse-probability correction can be enormous. The estimator remains unbiased over the complete audit distribution, but a normal interval estimated from a small realized sample can be grossly overconfident. [witness.json](witness.json) records examples; its truth labels were added afterward by the evaluator.
+Entropy review performs better at smaller budgets, while uniform review performs better at the largest tested budget. The fixed mixture is intermediate and does not improve the observed frontier. Confident errors explain the limitation: an attack can flip an answer while leaving its entropy and review probability very small.
 
-**The negative result matters:** the valid conservative Bernstein gate selects baseline in **100%** of replays across all tested audit allocators and conditions: zero observed harm, **zero improvement**. It does not solve the usefulness problem. The 50% mixture also has **no demonstrated utility advantage over uniform auditing**: its improvement difference is only +0.0045 pp (paired pool-bootstrap interval −0.0049 to +0.0139 pp). There is no established Pareto improvement or new-method novelty here. Low observed harm does not turn the normal approximation into a certificate.
+Attack adaptation matters. Entropy review leaves 3.641% residual error against the placement chosen to attack uniform review, but 9.900% against its own allocation-aware attack, at the same 20% budget. This is a finite-search comparison, not an exhaustive worst-case guarantee.
 
-Intervals in [summary.json](summary.json) resample the **40 pools**, preserving paired comparisons. They are descriptive uncertainty estimates for this data-generating process and attack family, not deployment guarantees. An all-zero bootstrap interval is not proof of zero population risk. The headline is the planned harm objective; a separately optimized utility-loss objective is also included in the raw results.
+![Measured real-judge pilot](real_judge/results.png)
 
-## How the synthetic world works
+The stronger general claim that text attacks suppress review priorities is not established. Across the predefined fixed masks, updating priorities after attack helps entropy review on average. The defensible mechanism is **confident error under selective review**, and the experimental lesson is to attack the full review procedure.
 
-1. A prompt is easy (80%) or hard (20%). Baseline, good, and bad correctness probabilities are `[0.62, 0.68, 0.60]`, minus 0.18 on hard prompts. A shared uniform draw produces correlated, paired correctness labels. This deliberately simple, monotone setup is a limitation.
-2. A synthetic judge flips correctness with probability 0.01 on easy prompts and 0.25 on hard prompts. Most flip noise is shared across candidates, with 20% independently drawn. Proxy scores are 0.02 or 0.98.
-3. The clean audit-priority feature is `sqrt(error_rate + 0.002)`. It is an informative synthetic feature, not a fitted published acquisition model. The active allocator uses water filling: `p_i = min(1, lambda * priority_i)`, with `lambda` chosen for mean probability 0.20.
-4. A mixture uses `p_mix = eta * 0.20 + (1-eta) * p_active`. Uniform auditing is `eta=1`; the unprotected allocator is `eta=0`. Tiny positive probabilities are allowed for that vulnerable baseline.
-5. Attacks can set one candidate's selected proxy scores to 0.75, 0.9, or 1.0 and multiply selected priorities by 0.001, 0.03, 0.3, 1, or 10. Candidate row sets use only visible proxy scores, group, and random rankings. The 1/1000 multiplier is an intentionally strong capability: a real text attack has **not** been shown to achieve it.
-6. A calibration-based surrogate evaluates candidate payloads against the exact defender's normal gate. Final measurements use fresh private audit coins and evaluator-only truth.
+## What has been implemented
 
-Let `d_ij` be candidate-minus-baseline truth, `s_ij` the analogous proxy contrast, and `A_i` the audit indicator. We use the established augmented inverse-probability estimator:
+| Component | Status |
+|---|---|
+| JudgeDeceiver suffix replay, both response orders, neutral-padding control | Completed |
+| Local Mistral scoring and raw generation capture | Completed |
+| Entropy, uniform, and equal-mixture allocations | Completed |
+| Allocation-aware placement search and cross-attack matrix | Completed; finite greedy/swap search |
+| Score versus audit-priority ablations | Completed |
+| Stable near-tie aggregation and numerical verification | Completed |
+| Actual human review or unseen-question transfer | Not yet evaluated |
+| Full robust-sampling and audited best-arm baselines | Remaining work |
+| New justified allocation method and useful model selection | Remaining research |
 
-$$\widehat\Delta_j=\frac1N\sum_i\left[s_{ij}+\frac{A_i}{p_i}(d_{ij}-s_{ij})\right].$$
+The original 600 generations are unchanged. A numerical audit recovered unrounded choice logits and corrected seven near-tied pair decisions that naive float32 averaging had misclassified. Final choices were checked with 100-digit arithmetic. See [the correction record](real_judge/numerical_correction.json).
 
-For fixed scores and private independent audit coins its expectation is the true finite-pool gain, regardless of attack. Its exact design variance is
+## From existing papers to the proposed contribution
 
-$$\mathrm{Var}(\widehat\Delta_j)=\frac1{N^2}\sum_i(p_i^{-1}-1)(d_{ij}-s_{ij})^2.$$
+- **Shi et al., JudgeDeceiver:** supplies realizable optimized text attacks. We reuse published suffixes and extend evaluation to selective review and allocation-aware placement.
+- **Zrnic and Candes, Active Statistical Inference:** supplies prediction-plus-audit correction with known sampling probabilities.
+- **Li, Zrnic and Candes, Robust Sampling:** supplies an optimized interpolation baseline. Our fixed mixture is not a reproduction of their procedure.
+- **Ao et al., audited best-arm identification:** supplies the model-selection formulation, residual correction, and confidence-sequence baseline.
+- **Kenton et al., debate training:** supplies related reward-hacking motivation. No debate training or RL fine-tuning has been reproduced here.
 
-The normal gate plugs an unbiased variance estimator into a Bonferroni-adjusted normal lower bound. **Unbiased variance estimation does not guarantee interval coverage**, especially when rare, enormous corrections dominate the distribution. The Bernstein reference uses bounded residuals and a simultaneous union bound. See `bounds()` in [experiment.py](experiment.py). The code records theoretical variance and Monte Carlo variance separately; short replays may miss rare tails.
+The proposed extension will allocate labels using uncertainty about candidate-comparison residuals, rather than judge confidence alone, and test whether this reduces the trusted-label cost of a useful decision. Calibration, verification, judge tokens, and attack queries must all be counted. Any algorithmic claim depends on outperforming published statistical comparators on fresh data.
 
-## Reproduce
+The bibliography is [references.bib](references.bib). The mathematical connection, implementation order, falsification tests, and distinction between a course result and paper contribution are in [RESEARCH_PLAN.md](RESEARCH_PLAN.md).
 
-Python 3.10+ recommended. No GPU, API credentials, or SciPy required.
+## Reproduce the saved analysis
 
-```bash
-python -m venv .venv
+Python 3.12 is recommended. No model weights, GPU, or inference API are needed for analysis. Public source inputs are fetched from their pinned upstream commit and checked against recorded hashes.
+
+~~~sh
+python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-python -m unittest -v test_experiment.py
-python experiment.py --config config_pilot.json --workers 2 --out results/reproduction
-python analyze.py --results results/reproduction
-```
+python real_judge/prepare_inputs.py
+python real_judge/analyze_pilot.py
+python real_judge/verify_pilot.py
+python -m unittest discover -s synthetic -p 'test_*.py' -v
+~~~
 
-Output directories must be new, preventing accidental result overwrites. Exact numerical replication was checked for seeds 12000 and 12001 between serial and two-worker execution. Five tests cover exhaustive small-pool unbiasedness/variance, audit-budget accounting, full-audit recovery, attack validity, and search independence from hidden test truth. NumPy is the only runtime dependency for simulation; Matplotlib is used for plotting. Cross-platform floating-point ties can differ; pin NumPy 2.3.5 for closest reproduction.
+The figure and summary are regenerated from saved model outputs. Verification covers source/prompt hashes, 600 records, 300 pair decisions, allocation budgets, attack caps, and analytical review expectations against Monte Carlo calculations.
 
-The frozen published snapshot is at repository root: [seed_metrics.csv](seed_metrics.csv), [metadata.json](metadata.json), [summary.json](summary.json), [witness.json](witness.json), and the plot. Regenerate its summary with `python analyze.py --results .`. `metadata.json` contains the experiment-code SHA-256 and executed configuration. `config_pilot.json` and `config_scale.json` are inputs, not claimed preregistrations with an independent timestamp.
+### Repeat local model inference
 
-## Extending on a bigger CPU machine
+Apple Silicon is required for this MLX runner. The full original dependency snapshot is in real_judge/requirements-lock.txt; optional inference dependencies are separate from portable analysis.
 
-**More CPU cores increase the number of independent seeds we can run concurrently. They do not resolve the theoretical or novelty gap.** The simulator already parallelizes whole pools with `ProcessPoolExecutor`; results are seeded independently of worker scheduling.
+~~~sh
+python -m pip install -r real_judge/requirements-inference.txt
+python real_judge/prepare_inputs.py --model
+python real_judge/run_pilot.py
+python real_judge/audit_choice_logits.py
+python real_judge/analyze_pilot.py
+python real_judge/verify_pilot.py
+~~~
 
-The supplied, **not yet executed**, scale configuration increases to 8,192 prompts, 200 independent pools, 2,048 audit replays, 120 attack candidates, and 128 search replays. Start with 8 workers and at least 16–32 GB RAM; budget roughly 1–2 GB per worker conservatively and measure peak memory. Increase to 16 workers only after checking memory and throughput. The largest matrix of audit uniforms alone uses `8 * prompts * replays` bytes (128 MiB per worker in this scale configuration); transient matrix operations need more. Much larger pools require chunked replay evaluation, which this version does not implement.
+The runners resume existing records. For a fresh measured replication, copy the scripts, protocol, input manifest, neutral controls, setup files, and run_metadata.json into a new experiment directory, prepare its inputs/model, then run the sequence there. Preserve the published snapshot rather than deleting its results. The copied metadata establishes input provenance; new session timing is recorded by the runner.
 
-```bash
-# Measure two full-size pools before scheduling the 200-pool job.
-python experiment.py --config config_scale.json --seeds 2 --workers 2 --out results/scale-timing
+On an Apple M5 Pro with 24 GB memory, generation and initial scoring took 5.819 minutes and the logit audit took 2.661 minutes. Peak MLX generation memory was 4.985 GB. Timings exclude setup, download, and development.
 
-# Main CPU run; choose the worker count to match your allocation.
-bash run_large_cpu.sh 8 results/scale-main
-```
+## Repository layout and scope
 
-Estimate server runtime from the measured per-pool times in `metadata.json`: `mean(pool_seconds) * number_of_pools / workers`, then allow extra time for contention and plotting. Do not extrapolate the 5.09-second laptop result as a server guarantee. Set BLAS thread counts to one (the script does this) to avoid every worker launching its own large thread pool.
+- real_judge/: corrected code, frozen protocol, scored outputs, attack witnesses, and results.
+- synthetic/: earlier inference stress test, preserved as a regression benchmark.
+- RESEARCH_PLAN.md: remaining methodological and evaluation work.
+- references.bib: proposal and research-plan sources.
+- CLEANUP.md: removed obsolete files and historical snapshot reference.
 
-For a university SLURM allocation, activate your environment, request e.g. 8 CPU cores and 32 GB RAM, and run `bash run_large_cpu.sh "$SLURM_CPUS_PER_TASK" results/scale-main`. Queue, account, and environment setup depend on the university cluster. No cluster job has been submitted.
+The synthetic benchmark finds that direct priority manipulation can destroy a naive normal interval's coverage, while its valid conservative bound always retains the baseline. Neither outcome is a useful certified defense. Its numerical edit capability differs from the realized text attack.
 
-### Scientific expansion, in order
-
-1. **Repair inference and test strong competitors.** Implement variance-adaptive valid intervals and actual robust-active-inference / best-arm-auditing baselines. Separate reproduction from adaptations. Uniform auditing is mandatory. Abandon a new-defense claim if an existing procedure solves this setting.
-2. **Change the simulator, not just its size.** Sweep corruption fractions 1/5/10/20%, audit fractions 5/10/20/40%, gaps 1/3/6 pp, numbers of candidates, error heterogeneity, and less extreme priority multipliers. Add non-monotone candidate outcomes and calibration shift. Preserve all cells, including failures. These sweeps require separate config/code changes; `config_scale.json` currently scales only the same primary setting.
-3. **Strengthen the attacker.** Increase candidate-family diversity and optimization effort; add per-row heterogeneous edits and attacks against new confidence procedures. This finite search is not a globally optimal attack.
-4. **Evaluate useful operating points.** Require valid coverage first, then compare harm, retained improvement, fallback, and both test-label and compute cost. Use pool-level uncertainty and prespecified comparisons; do not select a favorable mixture after inspecting test data and call it a discovery.
-5. **Move to real judge outputs.** Cache outputs of 7B/8B/14B judges on the university 48–80 GB GPU, implement answer-preserving text attacks, and measure whether they actually change acquisition scores as assumed here. CPU workers then reuse those cached outputs for audits. A bigger CPU alone does not supply evidence about real LLM attacks.
-
-## Related work and attribution
-
-The correction estimator and uniform mixtures are existing ideas, not claimed contributions of this repository. The pilot does **not** implement the full proposed minimax allocator or reproduce these methods:
-
-- [Active Statistical Inference, ICML 2024](https://proceedings.mlr.press/v235/zrnic24a.html)
-- [Robust Sampling for Active Statistical Inference, NeurIPS 2025](https://arxiv.org/abs/2511.08991)
-- [Best Arm Identification with LLM Judges and Limited Human Audits, 2026 preprint](https://arxiv.org/abs/2601.21471)
-- [Causal Judge Evaluation](https://arxiv.org/abs/2512.11150)
-- [JudgeDeceiver, CCS 2024](https://arxiv.org/abs/2403.17710)
-- [Debate Training Reduces Reward Hacking in RLAIF, 2026 preprint](https://arxiv.org/abs/2608.17776)
-
-## Ethics and current status
-
-Only locally generated numerical data are attacked. There are no live services, real user data, stolen credentials, or deployed exploits. Future real-model tests should remain in controlled environments; report any newly discovered deployed vulnerability privately before publishing operational details.
-
-Completed: synthetic simulator, finite adaptive search, five audit allocations, three gates, mechanism ablations, CPU parallelization, measured pilot, tests, and reproducible results. Outstanding: useful valid intervals, published strong-baseline replications, the proposed minimax defense, stronger adversaries, and real-LLM evidence. The proposal PDF is distributed separately; this repository contains code, documentation, and experimental data.
+Completed work uses public research examples and a local model, with simulated trusted review. It does not attack a deployed service or use private user data. Further tests will preserve verifier integrity and use authorized models/data. Newly discovered deployed-service vulnerabilities should be disclosed privately before releasing operational details.

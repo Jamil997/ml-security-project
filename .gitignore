@@ -1,5 +1,10 @@
 .venv/
 __pycache__/
 *.pyc
-results/
 .DS_Store
+real_judge/model/
+real_judge/upstream/
+real_judge/prompts.jsonl
+*.pdf
+*.log
+synthetic/results/
