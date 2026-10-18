@@ -1,5 +1,7 @@
 # Budgeted verification of LLM judges under adaptive prompt injection
 
+**Research scope.** The primary project remains [safe policy improvement on OptDigits and the E9 evidence-acquisition study](https://github.com/Jamil997/poisoned-logs-optdigits). This repository is its exploratory continuation toward LLM-as-a-Judge security. The original benchmark, estimator comparisons, source-weighting results, and OptDigits confirmation plan remain necessary. The judge pilot supplies a more realistic corruption mechanism; it does not replace that foundation.
+
 This project studies how to use a limited trusted-review budget when an LLM judge can be manipulated. Selective review can concentrate labels on difficult cases, but an injected response may be confidently wrong and therefore receive little scrutiny. The research goal is to preserve the efficiency of selective review while making reliable, useful model comparisons under adaptive attacks.
 
 The repository contains two completed experiments. The **real-judge pilot** replays published JudgeDeceiver suffixes on a local Mistral judge and evaluates the resulting review allocations. The **synthetic stress test** isolates a failure of normal-approximation inference under manipulated audit priorities. These experiments establish a mechanism and a testbed; the proposed statistical defense remains to be implemented.
